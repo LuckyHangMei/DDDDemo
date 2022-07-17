@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace Christ3D.Application
 {
+    /// <summary>
+    /// 平时我们写AutoMapper映射实体关系类
+    /// </summary>
     public class DomainToViewModelMappingProfile:Profile
     {
         public DomainToViewModelMappingProfile()

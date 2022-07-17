@@ -40,7 +40,7 @@ namespace Christ3D.Infrastruct.Data.Mappings
                     .IsRequired();
 
                 //处理值对象配置，否则会被视为实体
-               // builder.OwnsOne(p => p.Address);
+                  builder.OwnsOne(p => p.Address);
 
                 //可以对值对象进行数据库重命名，还有其他的一些操作，请参考官网
                 //builder.OwnsOne(

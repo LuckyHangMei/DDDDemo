@@ -44,6 +44,6 @@ namespace Christ3D.Domain.Models
         /// <summary>
         /// 户籍
         /// </summary>
-        //public Address Address { get; private set; }
+        public Address Address { get; private set; }
     }
 }

@@ -4,6 +4,7 @@ using Christ3D.Application.Services;
 using Christ3D.Domain.Interfaces;
 using Christ3D.Infrastruct.Data.Context;
 using Christ3D.Infrastruct.Data.DataRepository;
+using Christ3D.WebApi.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
@@ -12,15 +13,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 //数据库连接地址写入
-builder.Services.AddDbContext<StudyContext>(options => {
+builder.Services.RegisterServices(builder.Configuration);
 
-    options.UseMySql(builder.Configuration.GetSection("ConnectionStrings:DefaultConnection").Get<string>(), ServerVersion.Create(8,0,22, ServerType.MySql));
-});
+builder.Services.AddAutoMapperSetup();//添加AutoMapper
 
-builder.Services.AddAutoMapper(typeof(DomainToViewModelMappingProfile));
-
-builder.Services.AddScoped<IStudentAppService, StudentAppService>();
-builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+//builder.Services.AddScoped<IStudentAppService, StudentAppService>();
+//builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
